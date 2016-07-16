@@ -12,6 +12,8 @@
 		510D2ABB1D3986380038C83B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 510D2AB91D3986380038C83B /* Main.storyboard */; };
 		510D2ABD1D3986380038C83B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 510D2ABC1D3986380038C83B /* Assets.xcassets */; };
 		510D2AC01D3986380038C83B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 510D2ABE1D3986380038C83B /* LaunchScreen.storyboard */; };
+		510D2AC81D3A5FD10038C83B /* calcPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510D2AC71D3A5FD10038C83B /* calcPattern.swift */; };
+		510D2ACA1D3AB3760038C83B /* RowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510D2AC91D3AB3760038C83B /* RowTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		510D2ABC1D3986380038C83B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		510D2ABF1D3986380038C83B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		510D2AC11D3986380038C83B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		510D2AC71D3A5FD10038C83B /* calcPattern.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = calcPattern.swift; sourceTree = "<group>"; };
+		510D2AC91D3AB3760038C83B /* RowTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				510D2ABC1D3986380038C83B /* Assets.xcassets */,
 				510D2ABE1D3986380038C83B /* LaunchScreen.storyboard */,
 				510D2AC11D3986380038C83B /* Info.plist */,
+				510D2AC71D3A5FD10038C83B /* calcPattern.swift */,
+				510D2AC91D3AB3760038C83B /* RowTableViewCell.swift */,
 			);
 			path = "Katie's Pattern Generator";
 			sourceTree = "<group>";
@@ -135,7 +141,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				510D2ACA1D3AB3760038C83B /* RowTableViewCell.swift in Sources */,
 				510D2AB81D3986380038C83B /* ViewController.swift in Sources */,
+				510D2AC81D3A5FD10038C83B /* calcPattern.swift in Sources */,
 				510D2AB61D3986380038C83B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
