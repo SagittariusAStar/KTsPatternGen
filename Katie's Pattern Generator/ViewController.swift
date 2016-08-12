@@ -34,16 +34,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func getLine(sender: UIButton) {
-        let patGen = patternGenerator(l: Int(stepLineNumber.value));
-        patGen.createInitRow();
+        let patGen = patternGenerator()
         
-        let currentRow = patGen.getRowValues();
-        var testString :String = "";
+        let currentRow = patGen.getLineValues(Int(stepLineNumber.value))
+        var testString :String = ""
         for i in 0...currentRow.count-1{
             if i % 5 == 0{
                 testString += "\r\n";
             }
-            testString += " " + String(currentRow[i]);
+            testString += " " + String(currentRow[i])
         }
         
         testOutput.text = testString;

@@ -7,69 +7,60 @@
 //
 
 import UIKit
+import GameplayKit
 
 class patternGenerator{
     
     let itemCount = 50
-    var line: Int
-    var someInts = [Int]()
+    let seedOffset = 75
     
-    init(l:Int){
-        self.line = l;
+    func calcSeed(line : Int) -> UInt32 {
+        return UInt32(line * seedOffset)
     }
     
-    func createInitRow(){
-        for _ in 0...line {
-            someInts = [];
-            createNextRow();
-        }
-    }
-    
-    func createNewRow(){
-        line += 1;
-        createNextRow();
-    }
-    
-    func getRowValues() -> [Int]{
-        return someInts;
-    }
-    
-    func createNextRow(){
-        var sum: Int = 0;
-        for _ in 1...itemCount {
-            let x = arc4random_uniform(5);
-            var y: Int;
-            y = Int(x) - 2;
-            someInts.append(y);
-            sum += y
+    func getLineValues(line : Int) -> [Int]{
+        var sum = 0
+        var linevalues = [Int]()
+        let seed = calcSeed(line)
+        
+        var tmp : Int = Int(seed)
+        let data = NSData(bytes: &tmp, length: sizeof(Int))
+        let source = GKARC4RandomSource.init(seed: data)
+        let distInitValues = GKRandomDistribution.init(randomSource: source, lowestValue: -2, highestValue: 2)
+        let distCorretion = GKRandomDistribution.init(randomSource: source, lowestValue: 0, highestValue: 49)
+        
+        for _ in 1..<itemCount {
+            let current = distInitValues.nextInt()
+            sum += current
+            linevalues.append(current)
         }
         
         while sum != 0 {
             if sum > 0{
                 //deduct 1
-                var randIndex = Int(arc4random_uniform(50));
-                var localValue = someInts[randIndex];
+                var randIndex = distCorretion.nextInt()
+                var localValue = linevalues[randIndex]
                 while localValue < -1 {
-                    randIndex = Int(arc4random_uniform(50));
-                    localValue = someInts[randIndex];
+                    randIndex = distCorretion.nextInt()
+                    localValue = linevalues[randIndex]
                 }
                 
-                someInts[randIndex] -= 1;
-                sum -= 1;
+                linevalues[randIndex] -= 1
+                sum -= 1
             } else {
                 //add 1
-                var randIndex = Int(arc4random_uniform(50));
-                var localValue = someInts[randIndex];
+                var randIndex = distCorretion.nextInt()
+                var localValue = linevalues[randIndex]
                 while localValue > 1 {
-                    randIndex = Int(arc4random_uniform(50));
-                    localValue = someInts[randIndex];
+                    randIndex = distCorretion.nextInt()
+                    localValue = linevalues[randIndex]
                 }
                 
-                someInts[randIndex] += 1;
-                sum += 1;
+                linevalues[randIndex] += 1
+                sum += 1
             }
         }
+        
+        return linevalues
     }
-    
-    
 }
